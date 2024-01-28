@@ -1,20 +1,13 @@
 const tail = function(array) {
-  // console.log(array);
  const newArrayWithoutHead = []; 
-
   for( let i = 1; i < array.length; i++){
-    // console.log(i);
-    // console.log(array[i]);
     newArrayWithoutHead.push(array[i]);
-  }
-  console.log(newArrayWithoutHead);
+  }  
   return newArrayWithoutHead;
 };
 
 
 const assertEqual = function(actual, expected) {
-  console.log(actual);
-  console.log(expected);
   if (actual === expected) {
     console.log(`✌ Assertion Passed: ${actual} === ${expected}`);
   } else if (actual !== expected) {

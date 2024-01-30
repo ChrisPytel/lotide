@@ -42,42 +42,37 @@ const middle = function (arr){
   const arrayMid = [];
   if (arr.length < 3){
     console.log("no middle found in arrays under size 3");
+    return arrayMid;
   }
   else if(arr.length % 2 == 0){ //checks if length is even and returns middle 2 values
     console.log("Array.length is even, here are the middle 2 values:");
-    arrayMid.push(arr.length / 2);
-    arrayMid.push((arr.length + 2) / 2);
+
+    arrayMid.push(arr[arr.length / 2]);
+    arrayMid.push(arr[(arr.length + 2) / 2]);
   }
   else if (arr.length % 2 == 1){//checks if length is odd and returns 1 middle value
     console.log("Array.length is odd, here is the middle value:");
-    arrayMid.push((arr.length + 1) / 2);
+    arrayMid.push(arr[(arr.length + 1) / 2]);
   }
   console.log(arrayMid);
 return arrayMid;
 }
 
-
-
-
-
-
 //For arrays with one or two elements, there is no middle. Returns an empty array.
 // For arrays with even number of elements, will return the middle 2 values.
 // For arrays with odd number of elements, will return only the middle value.
+
   // middle([1, 2]) // => []
   // middle([1, 2, 3]) // => [2]
-  // middle([1, 2, 3, 4]) // => [2]
-  // middle([1, 2, 3, 4, 5]) // => [3]
   // middle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) // => [7]
-  middle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) // => [9, 10]
+  // middle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) // => [9, 10]
 
 //super longtests
-  const longArrayCount = 312;
   const reallyLongArray = [];
-  for (i = 0; i< longArrayCount; i++){
+  const longArrayCount = 194; //must be greater than i declared in the for loop below
+    for (i = 162; i< longArrayCount; i++){
     reallyLongArray.push(i);  
   }
 
-  console.log(middle(reallyLongArray));
-
- 
+middle(reallyLongArray);
+  // console.log(middle(reallyLongArray));

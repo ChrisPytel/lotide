@@ -46,13 +46,12 @@ const middle = function (arr){
   }
   else if(arr.length % 2 == 0){ //checks if length is even and returns middle 2 values
     console.log("Array.length is even, here are the middle 2 values:");
-
-    arrayMid.push(arr[arr.length / 2]);
-    arrayMid.push(arr[(arr.length + 2) / 2]);
+    arrayMid.push(arr[(arr.length - 2) / 2]);     //divides the length and pushes index value
+    arrayMid.push(arr[arr.length / 2]);           //divides the arr and pushes index value
   }
   else if (arr.length % 2 == 1){//checks if length is odd and returns 1 middle value
     console.log("Array.length is odd, here is the middle value:");
-    arrayMid.push(arr[(arr.length + 1) / 2]);
+    arrayMid.push(arr[(arr.length - 1) / 2]);
   }
   console.log(arrayMid);
 return arrayMid;
@@ -64,15 +63,15 @@ return arrayMid;
 
   // middle([1, 2]) // => []
   // middle([1, 2, 3]) // => [2]
-  // middle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]) // => [7]
-  // middle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) // => [9, 10]
+  // middle([11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]) // => [18] with 15 indices
+  middle([31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]) // => [39, 40] with 18 indices
 
 //super longtests
-  const reallyLongArray = [];
-  const longArrayCount = 194; //must be greater than i declared in the for loop below
-    for (i = 162; i< longArrayCount; i++){
-    reallyLongArray.push(i);  
-  }
+//   const reallyLongArray = [];
+//   const longArrayCount = 194; //must be greater than i declared in the for loop below
+//     for (i = 162; i< longArrayCount; i++){
+//     reallyLongArray.push(i);  
+//   }
 
-middle(reallyLongArray);
+// middle(reallyLongArray);
   // console.log(middle(reallyLongArray));

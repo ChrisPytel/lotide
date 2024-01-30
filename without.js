@@ -50,7 +50,7 @@ const without = function(sourceArray, removeThis) {
     let isMatch = false;
     //uncomment logs for testing
     console.log(`\nOriginal array value: ${sourceArray[i]}    datatype = ${typeof sourceArray[i]}`);
-          for (let i2 = 0; i2 < removeThis.length; i2++) {
+    for (let i2 = 0; i2 < removeThis.length; i2++) {
       //uncomment logs for testing
       console.log(`  Value to remove: ${removeThis[i2]}    datatype = ${typeof removeThis[i2]}`);
       if (sourceArray[i] === removeThis[i2]) {
@@ -73,7 +73,7 @@ const without = function(sourceArray, removeThis) {
     }
   }
   console.log(filteredArray);
-  // return filteredArray;
+  return filteredArray;
 };
 
 
@@ -81,18 +81,16 @@ const without = function(sourceArray, removeThis) {
 
 
 
-// Here are a couple examples, but please don't limit your testing to just these scenarios:
+// Here are a couple examples for testing scenarios:
 // without([1, 2, 3], [1]) // => [2, 3]
 // without(["1", "2", "3"], [1, 2, "3"]); // => ["1", "2"]
-without(["1", "2", "3", 42, "tree", "potato"], [1, 2, "3", "tree", "mango"]); // => ["1", "2", 42, "potato"]
+// without(["1", "2", "3", 42, "tree", "potato"], [1, 2, "3", "tree", "mango"]); // => ["1", "2", 42, "potato"]
 
 
-// const words = ["hello", "world", "lighthouse"];
-// without(words, ["lighthouse"]); // no need to capture return value for this test case
-
-// //Make sure the original array was not altered by the without function
-// assertArraysEqual(words, ["hello", "world", "lighthouse"]);
-
+// Make sure the original array was not altered by the without function
+const words = ["hello", "world", "lighthouse"];
+without(words, ["lighthouse"]); // no need to capture return value for this test case
+assertArraysEqual(words, ["hello", "world", "lighthouse"]);
 
 
 //Brought over the last assertions for testing

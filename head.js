@@ -1,5 +1,5 @@
-const head = function(value) {
-  return value[0];
+const head = function(array) {
+  return array[0];
 };
 
 const assertEqual = function(actual, expected) {

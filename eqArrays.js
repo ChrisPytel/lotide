@@ -15,7 +15,6 @@ const eqArrays = function(arr1, arr2) {
     //sets the intial value as true, if it runs into a mismatch, sets as untrue and returns false, breaking the loop
     let arrayValueMatch = true;
     // traditional execution with a for loop
-
     for (let i = 0; i < arr1.length; i++) {
       console.log(`Comparing: ${arr1[i]} type= ${typeof arr1[i]} / ${arr2[i]} type= ${typeof arr2[i]}`);
       if (arr1[i] === arr2[i]) {

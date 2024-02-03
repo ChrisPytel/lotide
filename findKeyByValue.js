@@ -11,17 +11,17 @@ const assertEqual = function(actual, expected) {
 It should scan the object and return the first key which contains the given value.
 If no key with that given value is found, then it should return undefined.    */
 
-const findKeyByValue = function(showList, showToCheck) {
+const findKeyByValue = function(object, value) {
     
-  for (const show in showList) {
-    // console.log(show);
-    // console.log(showList[show]);
+  for (const key in object) {
+    console.log(key);
+    console.log(object[key]);
 
-    if (showToCheck === showList[show]) {
-      // console.log("📺 WOW! We got a match! 🍿");
-      // console.log(showList[show] + " Matches with " + showToCheck);
+    if (value === object[key]) {
+      console.log("📺 WOW! We got a match! 🍿");
+      console.log(object[key] + " Matches with " + value);
       //confusing, but returns the key from the object, aka the genre in this case
-      return show;
+      return key;
     }
   }
 };

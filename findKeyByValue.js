@@ -1,35 +1,34 @@
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
-    console.log(`✌ Assertion Passed: ${actual} === ${expected}`);
+    console.log(`✌ Assertion Passed: ${actual} === ${expected}\n`);
   } else {
-    console.log(`🛑 Assertion Failed: ${actual} !==  ${expected}`);
+    console.log(`🛑 Assertion Failed: ${actual} !==  ${expected}\n`);
   }
 };
 
 
 /*    Implement the function findKeyByValue which takes in an object and a value.
-It should scan the object and return the first key which contains the given value. 
+It should scan the object and return the first key which contains the given value.
 If no key with that given value is found, then it should return undefined.    */
 
-  const findKeyByValue = function(showList, showToCheck){
+const findKeyByValue = function(showList, showToCheck) {
     
-     for (const show in showList){
-      // console.log(show);
-      console.log(showList[show]);
+  for (const show in showList) {
+    // console.log(show);
+    // console.log(showList[show]);
 
-      if(showToCheck == showList[show]){
-        console.log("📺 Yes, We got a match! 🍿");
-        console.log(showList[show]+ " Matches with " + showToCheck);
-        //confusing, but returns the key from the object, aka the genre in this case
-        return show; 
-      }
+    if (showToCheck === showList[show]) {
+      // console.log("📺 WOW! We got a match! 🍿");
+      // console.log(showList[show] + " Matches with " + showToCheck);
+      //confusing, but returns the key from the object, aka the genre in this case
+      return show;
     }
-
   }
+};
 
 
 
-const bestTVShowsByGenre = { 
+const bestTVShowsByGenre = {
   sci_fi: "The Expanse",
   comedy: "Brooklyn Nine-Nine",
   drama:  "The Wire",
@@ -39,7 +38,7 @@ const bestTVShowsByGenre = {
   fantasy: "Game of Thrones",
   political: "House of Cards",
   foreign: "Squid Game",
-  comedy: "The Office"
+  workplace_comedy: "The Office"
 };
 
 

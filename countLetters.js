@@ -16,19 +16,19 @@ const countLetters = function(sequence) {
   const counterList = {};
 
   for (const letter of sequence) {
-    console.log(letter);
+    // console.log(letter);
     if (letter === " "){
       console.log("🌌 Encountered a space, not counting this");
     }
     else if (counterList[letter]) {
-      console.log("Exists already within counterList, adding +1 to its counter");
+      // console.log("Exists already within counterList, adding +1 to its counter");
       counterList[letter]++;
     } else {
-      console.log("Doesnt exist in counterList yet, adding first entry");
+      // console.log("Doesnt exist in counterList yet, adding first entry");
       counterList[letter] = 1;
     }
-
   }
+  
   return counterList;
 };
 
@@ -42,15 +42,6 @@ const sequence3 = countLetters("Give life back to music");
 console.log(sequence3);
 
 
-
-
-
-
-// The function should take in a sentence (as a string)
-// and then return a count of each of the letters in that sentence.
-
-// For example, countLetters('LHL') should return results indicating that L appears twice, and H once.
-
-// Before implementing this function, we need to think about how it will report back these counts.
-// It's not that we want to know how many H's are in this sentence?, because that would just be a number.
-// We need it report back multiple numbers.
+assertEqual(sequence1['L'], 2);
+assertEqual(sequence2["t"], 3);
+assertEqual(sequence3.i, 3);

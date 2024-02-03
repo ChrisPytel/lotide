@@ -53,31 +53,32 @@ const eqArrays = function(arr1, arr2) {
 //  all the places in the string that it shows up.
 
 
+/*
+run a for of through all letters
 
+
+*/
 
 const letterPositions = function(sentence) {
   const results = {};
-
+  let letterIndexNumber = 0;
 
   for (const letter of sentence){ 
-    // console.log(letter);
+    
+
     if (letter === " "){
-      console.log("🌌 Encountered a space, not counting this");
+      console.log("🌌 Encountered a space, skipping this");
     }
-    else if (results[letter]) {
-      // console.log("Exists already within counterList, adding +1 to its counter");
 
-      for(const index of sentence){
-        
-      }
-      
-      results[letter]++;
-    } else {
-      // console.log("Doesnt exist in counterList yet, adding first entry");
-      results[letter] = 1;
-    }
+    else if (letter !== " ") {
+      console.log(letter +" is a letter");
+      console.log("at index # " + letterIndexNumber);
+      results[letter] = [letterIndexNumber];     
+    } 
+
+    console.log("end of loop" +letterIndexNumber);
+    letterIndexNumber++;    
   }
-
 
   return results;
 };
@@ -85,10 +86,10 @@ const letterPositions = function(sentence) {
 
 
 
-const sequenceA = letterPositions("lighthouse in the house");
-console.log(sequenceA);
-// const sequenceA = letterPositions("LHL");
+// const sequenceA = letterPositions("lighthouse in the house");
 // console.log(sequenceA);
+const sequenceA = letterPositions("hello");
+console.log(sequenceA);
 // const sequenceB = letterPositions("Lighthouse Labs is pretty gosh darn cool");
 // console.log(sequenceB);
 // const sequenceC = letterPositions("Give life back to music");

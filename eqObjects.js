@@ -7,28 +7,29 @@ const assertEqual = function(actual, expected) {
 };
 
 
+
+//assisting EQ objects in its first test to count and return how many keys an object has 
+const keyCounter = function(objectToCount){
+  let keyCount = 0;
+    for (const keys in objectToCount){
+      keyCount++
+    }
+  return keyCount;
+}
+
+
 // Returns true if both objects have identical keys with identical values.
 // Otherwise you get back a false!
-
 const eqObjects = function(object1, object2){
    
-  for(const key1 in object1){
-    console.log('\n🙄 first loop, we have:');
-    console.log(key1);
-    console.log(object1[key1]);
-
-    //iterates through the second object passed in
-    for(const key2 in object2){
-      console.log('2ndloop, we have:');
-      console.log(key2);
-      console.log(object2[key2]);
-
-
-      if (object2[key2] ){
-      }
-    }
+  if (keyCounter(object1) === keyCounter(object2)){
+    console.log(`these two have the same number of keys`);
   }
+  else{
+    console.log(`they do not`);
 
+
+  }
 
   return true; //returns a true if we dont encounter a mismatch
 }
@@ -36,10 +37,10 @@ const eqObjects = function(object1, object2){
 
 const shirtObject = { color: "red", size: "medium" };
 const anotherShirtObject= { size: "medium", color: "red" };
-
+eqObjects(shirtObject , anotherShirtObject); // => true
 
 const longSleeveShirtObject= { size: "medium", color: "red", sleeveLength: "long" };
 eqObjects(shirtObject , longSleeveShirtObject); // => false
 
 
-// assertEqual(eqObjects(shirtObject , longSleeveShirtObject));
+// assertEqual(eqObjects(shirtObject , longSleeveShirtObject), false);

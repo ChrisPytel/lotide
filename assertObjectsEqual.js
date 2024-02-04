@@ -1,8 +1,6 @@
-const eqArrays = function(arr1, arr2) {
-  //first checks if the arrays are of the same length
-  if (arr1.length === arr2.length) {
-    // traditional execution with a for loop
-    for (let i = 0; i < arr1.length; i++) {
+const eqArrays = function(arr1, arr2) {  
+  if (arr1.length === arr2.length) {  //first checks if the arrays are of the same length
+    for (let i = 0; i < arr1.length; i++) {// iterates through and compares inner values
       console.log(`Comparing: ${arr1[i]} type= ${typeof arr1[i]} / ${arr2[i]} type= ${typeof arr2[i]}`);
       if (arr1[i] === arr2[i]) {
         console.log("🤍 Values are the same across both indeces");
@@ -17,7 +15,6 @@ const eqArrays = function(arr1, arr2) {
     return false;
   }
 };
-
 
 //assisting EQ objects in its first test to count and return how many keys an object has
 const keyCounter = function(objectToCount) {
@@ -83,15 +80,20 @@ const eqObjects = function(object1, object2) {
 
 // Implement assertObjectsEqual which will take in two objects and console.log
 // and appropriate message to the console.
-const assertObjectsEqual = function(obj1, obj2) {
-  console.log(obj1);
-  console.log(obj2);
-  const comparisonResult = eqObjects(obj1, obj2);
+const assertObjectsEqual = function(actual, expected) {
+  const inspect = require('util').inspect; // <= add this line
+  console.log(`Example label: ${inspect(actual)}`);
+
+  const comparisonResult = eqObjects(actual, expected);
+
   if (comparisonResult) {
-    console.log(`🥳 Object assertion passed: ${obj1} is the same as ${obj2}`);
+    console.log(`🥳 Object assertion passed: ${inspect(actual)} is the same as ${inspect(expected)}`);
   } else {
-    console.log(`💥Object assertion failed: ${obj1} is different from ${obj2}`);
+    console.log(`💥Object assertion failed: ${inspect(actual)} is different from ${inspect(expected)}`);
   }
+
+  console.log(actual);
+  console.log(expected);
 };
 
 

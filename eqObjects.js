@@ -3,9 +3,9 @@ const eqArrays = function(arr1, arr2) {
   if (arr1.length === arr2.length) {
     // traditional execution with a for loop
     for (let i = 0; i < arr1.length; i++) {
-      console.log(`Comparing: ${arr1[i]} type= ${typeof arr1[i]} / ${arr2[i]} type= ${typeof arr2[i]}`);
+      //console.log(`Comparing: ${arr1[i]} type= ${typeof arr1[i]} / ${arr2[i]} type= ${typeof arr2[i]}`);
       if (arr1[i] === arr2[i]) {
-        console.log("🤍 Values are the same across both indeces");
+        console.log("Values are the same across both indeces");
       } else if (arr1[i] !== arr2[i]) {
         console.log("💔 Array value mismatch");
         return false;
@@ -15,11 +15,8 @@ const eqArrays = function(arr1, arr2) {
   } else {
     console.error("💔 2 arrays passed in are not of the equal length");
     return false;
-  }
-  
+  }  
 };
-
-
 
 
 const assertEqual = function(actual, expected) {
@@ -32,81 +29,37 @@ const assertEqual = function(actual, expected) {
 
 
 
-
-
-
-//assisting EQ objects in its first test to count and return how many keys an object has
-const keyCounter = function(objectToCount) {
-  let keyCount = 0;
-  for (const keys in objectToCount) {
-    keyCount++;
-  }
-  return keyCount;
-};
-
-
-// Returns true if both objects have identical keys with identical values.
-// Otherwise you get back a false!
+// eqObjects returns true if both objects have identical keys with identical values
+// across 2 objects passed in (array contents included).
 const eqObjects = function(object1, object2) {
-   
-  if (keyCounter(object1) === keyCounter(object2)) {
-    console.log(`These objects have the same number of keys, now comparing contents`);
-
-    for (const key1 in object1) {
-      let keyMatch = false;
-      let valueMatch = false;
-      console.log("\nBegin primary loop on first object:\n");
-      console.log("Primary key is " + key1 + " and primary value is " + object1[key1]);
-
-      for (const key2 in object2) {
-        console.log("Loop comparing second object");
-        console.log("our key is " + key2 + " and our value is " + object2[key2]);
-
-        if (key1 === key2) {
-          console.log(`💛 Found matching keys: ` + key1 + " and " + key2);
-          keyMatch = true;
-        }
-
-        //if the matching values are arrays, run a check thier internal values
-        if (Array.isArray(object1[key1]) && Array.isArray(object2[key2])) {
-          console.log(`💙 Found arrays`);
-          console.log(object1[key1]);
-          console.log(object2[key2]);
-          if (eqArrays(object1[key1], object2[key2])) {
-            console.log(`💙 Found arrays with matching values: ` + object1[key1] + " and " + object2[key2]);
-            valueMatch = true;
-          } else {
-            console.log(`💢 Array content mismatch`);
-            return false;
-          }
-        }
-        
-        //if it is not an array, perform the check between primitives
-        else if (Array.isArray(object1[key1]) === false) {
-          if (object1[key1] === object2[key2]) {
-            console.log(`🧡 Found matching values: ` + object1[key1] + " and " + object2[key2]);
-            valueMatch = true;
-          }
-        }
-
-
-        
+  // Object.keys method returns an array of all the keys from the obj we pass in
+  const keys1 = Object.keys(object1);
+  const keys2 = Object.keys(object2);
+  const sameLength = keys1.length === keys2.length; //stores a bool 
+  if (!sameLength) return false;
+  
+  for (const key in object1) {//runs a loop through all keys in object1 which we passed in
+    // console.log(key, object1[key], object2[key]); 
+    if (Array.isArray(object1[key])) {     //checks if one of the values is an array
+      //will implicitly return false if the contents within the array passed into eqArrays is not aligned
+      if (!eqArrays(object1[key], object2[key])) {
+        return false;
       }
-      if (keyMatch === false || valueMatch === false) {
-        console.log(`💢Either a key or value was mismatched at the end of this primary loop`);
-        return false; // returns false if there is mismatch between keys and values across objects
-      }
-    }
-  } else {
-    console.log(`💢objects were of different length`);
-    return false; // returns false if there is mismatch on # of keys
+    }     
+    //Compares whether the primitive values across two objects match, if not, returns false
+    //implicitly checks the two keys against each other, if a key is different it will be undefined and also return false
+    else if (object1[key] !== object2[key]) {
+      console.log('Mismatch across values:', object1[key], object2[key]);
+        return false;
+    } 
   }
-  console.log(`🙏 Found no mismatches across objects`);
-  return true; //returns a true if we dont encounter no mismatch
+  console.log('✅No mismatches found across the object keys or values');
+  return true;
 };
 
 
-
+// const shirtObject = { color: "red", size: "medium" };
+// const anotherShirtObject = { pattern: "wavy", color: "red" };
 
 
 
@@ -116,23 +69,23 @@ const eqObjects = function(object1, object2) {
 
 // const shirtObject = { color: "red", size: "medium" };
 // const anotherShirtObject = { size: "medium", color: "red" };
-// eqObjects(shirtObject , anotherShirtObject); // => true
+// // eqObjects(shirtObject , anotherShirtObject); // => true
 // assertEqual(eqObjects(shirtObject , anotherShirtObject), true);
 
 
 // const shirtMismatchA = { color: "red", size: "medium" };
 // const shirtMismatchB = { size: "large", color: "red" };
-// eqObjects(shirtMismatchA , shirtMismatchB); // => true
+// // eqObjects(shirtMismatchA , shirtMismatchB); // => true
 // assertEqual(eqObjects(shirtMismatchA , shirtMismatchB), false);
 
 
 // const longSleeveShirtObject = { size: "medium", color: "red", sleeveLength: "long" };
-// eqObjects(shirtObject , longSleeveShirtObject); // => false
+// // eqObjects(shirtObject , longSleeveShirtObject); // => false
 // assertEqual(eqObjects(shirtObject , longSleeveShirtObject), false);
 
 
 const multiColorShirtObject = { colors: ["red", "blue"], size: "medium" };
-const anotherMultiColorShirtObject = { size: "medium", colors: ["red", "blue"] };
+const anotherMultiColorShirtObject = { size: "large", colors: ["red", "blue"] };
 eqObjects(multiColorShirtObject  , anotherMultiColorShirtObject); // => true
 
 // const longSleeveMultiColorShirtObject= { size: "medium", colors: ["red", "blue"], sleeveLength: "long" };

@@ -1,4 +1,4 @@
-//"takeUntil.js A1 -  "
+//"takeUntil.js A2 - takeUntil logic functions, added assertions for testing"
 
 //Prints the result of the eqArrays comparison algorithm.
 const assertArraysEqual = function(arrA, arrB) {
@@ -29,11 +29,11 @@ const takeUntil = function(array, callback){
   const newArray = [];
   // console.log(`our initial array is:`, array);
     for(const element in array){
-      // console.log(`element: `, array[element]);
-      if (callback(array[element]) === false){
+      // console.log(`element: `, array[element]); 
+      if (callback(array[element]) === false){ 
         newArray.push(array[element]);
       }   
-      else break;      
+      else break; //ends the loop as soon as the callback hits a true return
     }
   return newArray;
 }
@@ -41,16 +41,15 @@ const takeUntil = function(array, callback){
 
 const data1 = [1, 2, 5, 7, 2, -1, 2, 4, 5];
 const results1 = takeUntil(data1, number => number < 0);
-console.log(results1);
+console.log(results1);    //Expected Output [ 1, 2, 5, 7, 2 ]
 
 const data2 = ["I've", "been", "to", "Hollywood", ",", "I've", "been", "to", "Redwood"];
 const results2 = takeUntil(data2, x => x === ',');
-console.log(results2);
+console.log(results2);    //Expected Output [ 'I've', 'been', 'to', 'Hollywood' ]
 
 
-//Expected Output
 
-/* [ 1, 2, 5, 7, 2 ]
---
-[ 'I\'ve', 'been', 'to', 'Hollywood' ]
- */
+ /*        assertions for testing         */
+
+assertArraysEqual(results1, [ 1, 2, 5, 7, 2 ]);  // => true
+assertArraysEqual(results2, ["I've", "been", "to", "Hollywood"]);  // => true

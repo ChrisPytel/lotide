@@ -1,4 +1,4 @@
-//"findKey.js A2 - Added assertions to check findKey versatility"
+//"findKey.js A3 - Refactored and added more test cases, commented console.logs"
 
 const assertEqual = function(actual, expected) {
   if (actual === expected) console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
@@ -9,15 +9,14 @@ const assertEqual = function(actual, expected) {
 const findKey = function(object, callback) {
   console.log(`\nOur original object is: `, object);
   for (const key in object) {
-    if (callback(object[key])) {      
-      console.log(`Found our match, it is: `, key);
+    if (callback(object[key])) {
+      // console.log(`Found our match, it is: `, key);
       return key;
-    } 
-    else console.log(`No match found here at: `, key);
+    } // else console.log(`No match found here at: `, key);
   }
 };
 
-const skiHills = findKey({
+const restaurants = findKey({
   "Blue Hill": { stars: 1 },
   "Akaleri":   { stars: 3 },
   "noma":      { stars: 2 },
@@ -30,14 +29,27 @@ const pizzaPlaces = findKey({
   "Papa Johns":   { stars: 4 },
   "Pizza Hut":    { stars: 2 },
   "Dominos":      { stars: 3 },
-  "Pizza Pizza":  { stars: 2 },  
+  "Pizza Pizza":  { stars: 2 },
   "Otherside":    { stars: 5 },
   "241":          { stars: 1 },
   "Grazie Ristorante":      { stars: 5 }
 }, x => x.stars === 5); // => "Otherside"
 
 
+const civ6Leaders = findKey({
+  "Julius":        "Ceasar",
+  "Wilfred":       "Laurier",
+  "Simon":         "Bolivar",
+  "Otto":          "Von Bismark",
+  "Alexander":     "the Great",
+  "George":        "Washington",
+  "Peter":         "the Great",
+  "Mahatma":       "Ghandi"
+}, x => x === "the Great"); // => "Alexander"
+
+
 /*       assertions for testing         */
 
-assertEqual(skiHills, "noma");// => True
+assertEqual(restaurants, "noma");// => True
 assertEqual(pizzaPlaces, "Otherside");// => True
+assertEqual(civ6Leaders, "Alexander");// => True

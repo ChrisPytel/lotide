@@ -1,75 +1,45 @@
+//"middle.js A3 - Removed assertArraysEqual + eqArrays functions and imported modules"
 
+const assertArraysEqual = require('./assertArraysEqual');
+const eqArrays = require('./eqArrays');
 
-//Prints the result of eqArrays comparison algorithm.
-const assertArraysEqual = function(arrA, arrB) {
-  const comparisonResult = eqArrays(arrA, arrB);
-  if (comparisonResult) {
-    console.log(`✌ Assertion Passed: ${arrA} === ${arrB}\n`);
-  } else {
-    console.log(`🛑 Assertion Failed: ${arrA} !==  ${arrB}\n`);
-  }
-};
-
-//checks the contents of two arrays to see if they match
-const eqArrays = function(arr1, arr2) {
-  if (arr1.length === arr2.length) {  //first checks if the arrays are of the same length
-    let arrayValueMatch = true; //sets the intial value as true.
-    //If it runs into a mismatch, sets it to false breaks the loop
-    for (let i = 0; i < arr1.length; i++) {
-      // logs for testing which value and datatype are checked
-      // console.log(`Comparing: ${arr1[i]} which is dataype ${typeof arr1[i]} / ${arr2[i]} which is dataype ${typeof arr2[i]}`);
-      if (arr1[i] === arr2[i]) {
-        console.log("🤍 Values are the same across both indeces, so far arrayValueMatch remains: " + arrayValueMatch);
-      } else if (arr1[i] !== arr2[i]) {
-        arrayValueMatch = false;
-        console.log("💔 Value mismatch, arrayValueMatch is now: " + arrayValueMatch);
-        return false; //ends the loop early
-      }
-    }
-    return true; //if all indices are equal// not required actually as on ln24 it breaks if false
-  } else {
-    //console.error("2 arrays passed in are not of equal length);
-    return false;
-  }
-};
-
-
-
-//Implement middle which will take in an array and return the middle-most element(s) of the given array.
+// Implement middle which will take in an array and return the middle-most element(s) of the given array.
+// For arrays with one or two elements, there is no middle. Returns an empty array.
+// For arrays with even number of elements, will return the middle 2 values.
+// For arrays with odd number of elements, will return only the middle value.
 const middle = function(arr) {
-  console.log("\nArray passed in is:");
-  console.log(arr);
+  console.log("\nArray passed in is:", arr);
   const arrayMid = [];
   if (arr.length < 3) {
     console.log("no middle found in arrays under size 3");
     return arrayMid;
   } else if (arr.length % 2 === 0) { //checks if length is even and returns middle 2 values
-    console.log("Array.length is even, here are the middle 2 values:");
+    console.log("arr.length is even, here are the middle 2 values:");
     arrayMid.push(arr[(arr.length - 2) / 2]);     //divides the length and pushes index value
     arrayMid.push(arr[arr.length / 2]);           //divides the arr and pushes index value
   } else if (arr.length % 2 === 1) {//checks if length is odd and returns 1 middle value
-    console.log("Array.length is odd, here is the middle value:");
+    console.log("arr.length is odd, here is the middle value:");
     arrayMid.push(arr[(arr.length - 1) / 2]);
   }
   console.log(arrayMid);
   return arrayMid;
 };
 
-//For arrays with one or two elements, there is no middle. Returns an empty array.
-// For arrays with even number of elements, will return the middle 2 values.
-// For arrays with odd number of elements, will return only the middle value.
-
+//Test runner code
 // middle([1, 2]) // => []
 // middle([1, 2, 3]) // => [2]
-// middle([11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]) // => [18] with 15 indices
-// middle([31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48]); // => [39, 40] with 18 indices
 
-//super longtests
+const longArray1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+middle(longArray1) // => [18] is the middle with 15 indices
+const longArray2 = [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48];
+middle(longArray2); // => [39, 40] are the middle with 18 indices
+
+//for customized super longtests
   const reallyLongArray = [];
-  const longArrayCount = 194; //must be greater than i declared in the for loop below
-    for (i = 162; i< longArrayCount; i++){
+    for (i = 162; i < 194; i++){ //creates an array of numbers between our intialized contitions
     reallyLongArray.push(i);
   }
 
-middle(reallyLongArray);
-// console.log(middle(reallyLongArray));
+// middle(reallyLongArray);
+
+assertArraysEqual(eqArrays(reallyLongArray, []), true );

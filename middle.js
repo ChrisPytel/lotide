@@ -1,28 +1,20 @@
-//"middle.js A4 - Moved test runner code to test/middleTest.js, added module.exports = middle"
+//"middle.js A5 - Refactored away some console.logs, added comments"
 
-const assertArraysEqual = require('./assertArraysEqual');
-const eqArrays = require('./eqArrays');
+// Middle takes in an array as an parameter and will returns the middle value of the array if its length is odd.
+// Returns the 2 values from the middle of the array if the length is even
+// Returns an empty array if its length is under 3 total indexes as there is no middle
 
-// Implement middle which will take in an array and return the middle-most element(s) of the given array.
-// For arrays with one or two elements, there is no middle. Returns an empty array.
-// For arrays with even number of elements, will return the middle 2 values.
-// For arrays with odd number of elements, will return only the middle value.
 const middle = function(arr) {
-  console.log("\nArray passed in is:", arr);
   const arrayMid = [];
-  if (arr.length < 3) {
-    console.log("no middle found in arrays under size 3");
-    return arrayMid;
-  } else if (arr.length % 2 === 0) { //checks if length is even and returns middle 2 values
-    console.log("arr.length is even, here are the middle 2 values:");
-    arrayMid.push(arr[(arr.length - 2) / 2]);     //divides the length and pushes index value
-    arrayMid.push(arr[arr.length / 2]);           //divides the arr and pushes index value
-  } else if (arr.length % 2 === 1) {//checks if length is odd and returns 1 middle value
-    console.log("arr.length is odd, here is the middle value:");
+  if (arr.length < 3) { //returns empty array if arr.l
+    return arrayMid; 
+  } else if (arr.length % 2 === 0) { //checks with modulus operator if our array is even
+    arrayMid.push(arr[(arr.length - 2) / 2]);
+    arrayMid.push(arr[arr.length / 2]); 
+  } else if (arr.length % 2 === 1) { //checks with modulus operator if our array is odd
     arrayMid.push(arr[(arr.length - 1) / 2]);
   }
-  console.log(arrayMid);
   return arrayMid;
 };
 
-module.exports = middle;
+module.exports = middle; //exports our middle function to communicate across modules

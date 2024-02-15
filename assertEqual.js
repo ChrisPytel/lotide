@@ -1,4 +1,4 @@
-//"assertEqual.js A5 - Readded curlybraces for readbility and added comments"
+//"assertEqual.js A6 - Readded curlybraces for readbility and added comments"
 
 //AssertEqual checks two values against each other (strictly without coercion)
 //Console.logs the result if they match or not

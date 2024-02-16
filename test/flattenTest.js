@@ -1,4 +1,4 @@
-//"flattenTest.js A1 - updated test cases to use mocha n chai"
+//"flattenTest.js A2 - linted away trailing spaces"
 
 const assert = require('chai').assert;
 const flatten = require('../flatten');
@@ -18,13 +18,13 @@ describe("#flatten", () => {
 
   it("should return [1, 2, 3, 4, 5, 6] testArray1", () => {
     assert.deepEqual(flatten(testArray1), [1, 2, 3, 4, 5, 6]);
-  }); 
+  });
 
   it("should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] for testArray2", () => {
-    assert.deepEqual(flatten(testArray2), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); 
-  }); 
+    assert.deepEqual(flatten(testArray2), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  });
 
   it("should return [1, 31, 51, 42, 11, 91, 12, 65, 31, 12, 44, 82, 12] for superNestedArray", () => {
     assert.deepEqual(flatten(superNestedArray), [1, 31, 51, 42, 11, 91, 12, 65, 31, 12, 44, 82, 12]);
-  }); 
+  });
 });

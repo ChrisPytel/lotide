@@ -1,22 +1,30 @@
-//"tailtest.js created - used to test tail.js"
+//"tailtest.js created - edited test cases to utilize mocha n chai"
 
-const assertEqual = require('../assertEqual');
+// const assertEqual = require('../assertEqual');   // using mocha instead
+const assert = require('chai').assert;
 const tail = require('../tail');
 
+//Test runner code
+const wordsList = ["Yo Yo", "Lighthouse", "Labs"]; // => would return ["Lighthouse", "Labs"]
+const numberList = [2, 4, 8, 16, 32, 64]; // => would return [4, 8, 16, 32, 64]
 
-// Test Case A: Check the original array
-const words = ["Yo Yo", "Lighthouse", "Labs"];
-tail(words); // no need to capture the return value since we are not checking it
-assertEqual(words.length, 3); // original array should still have 3 elements!
+//Mocha assertion Test runner code
+describe("#tail", () => {
 
+  it("returns empty array if initial array is empty", () => {
+    assert.deepEqual(tail(["Hello"]), []); 
+  });
 
-// Test Case B: Checking the returned array elements
-const result = tail(["Hello","Lighthouse","Labs"]);
-assertEqual(result.length, 2);        // should pass
-assertEqual(result[0], "Lighthouse"); // should pass
-assertEqual(result[1], "Labs");       // should pass
+  it("returns empty array if initial array has only 1 value", () => {
+    assert.deepEqual(tail([]), []); 
+  }); 
 
-// tail of array with one element only should be empty, will pass the assert
-assertEqual(tail(["test"]).length, 0);
-// tail of an empty array should also be empty, will also pass the assert
-assertEqual(tail([]).length, 0);
+  it("returns [`Lighthouse`, `Labs`] from [`Yo Yo`, `Lighthouse`, `Labs`]", () => {
+    assert.deepEqual(tail(wordsList), ["Lighthouse", "Labs"]); 
+  });
+
+  it("returns [4, 8, 16, 32, 64] from [2, 4, 8, 16, 32, 64]", () => {
+    assert.deepEqual(tail(numberList), [4, 8, 16, 32, 64]); 
+  });
+  
+});

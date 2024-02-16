@@ -1,18 +1,30 @@
-//"flattenTest.js created"
+//"flattenTest.js A1 - updated test cases to use mocha n chai"
 
+const assert = require('chai').assert;
 const flatten = require('../flatten');
 
 
 //Test runner code
-const testArray1 = [1, 2, [3, 4], 5, [6]];
-console.log(`Flattened testArray1 is now: `, flatten(testArray1));
-// output => [1, 2, 3, 4, 5, 6]
+const testArray1 = [1, 2, 3, 4, 5, 6];
+// when flattened should return => [1, 2, 3, 4, 5, 6]
+const testArray2 = [1, 2, [3, 4], 5, [6], [7, 8], [9], [10]];
+// when flattened should return => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const superNestedArray = [1, [31, [[51], 42, [11, [[91], [12]]], 65, [31, 12], 44], 82,], 12];
+// when flattened should return =>  [1, 31, 51, 42, 11, 91, 12, 65, 31, 12, 44, 82, 12]
 
-const testArray2 = [1, 2, [3, 4], 5, [6], [54, 12], [13], [14 , 16]];
-console.log(`Flattened testArray2 is now: `, flatten(testArray2));
-// output => 1, 2, 3, 4, 54, 6, 54, 12, 13, 14, 16
 
-const reallyNestedArray = [1, 12, [31, [[31], 42, 11, [41 , 12, ], 65, [31, 12], 44], 82,], 33, 12];
-console.log(`reallyNestedArray initially:`, reallyNestedArray);
-console.log(`Flattened reallyNestedArray is now: `, flatten(reallyNestedArray));
-// output =>  1, 12, 31, 31, 42, 11, 41, 12, 65, 31, 12, 44, 82, 33, 12
+//Mocha assertion Test runner code
+describe("#flatten", () => {
+
+  it("should return [1, 2, 3, 4, 5, 6] testArray1", () => {
+    assert.deepEqual(flatten(testArray1), [1, 2, 3, 4, 5, 6]);
+  }); 
+
+  it("should return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] for testArray2", () => {
+    assert.deepEqual(flatten(testArray2), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); 
+  }); 
+
+  it("should return [1, 31, 51, 42, 11, 91, 12, 65, 31, 12, 44, 82, 12] for superNestedArray", () => {
+    assert.deepEqual(flatten(superNestedArray), [1, 31, 51, 42, 11, 91, 12, 65, 31, 12, 44, 82, 12]);
+  }); 
+});

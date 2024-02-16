@@ -1,30 +1,21 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) console.log(`✅ Assertion Passed: ${actual} === ${expected}`);
-  else console.log(`🛑 Assertion Failed: ${actual} !==  ${expected}`);
-};
+//"countLetters.js A4 - updated comments"
 
-// We will initialize an empty variable defined as an object and keep track of how
-// many times our loop locates a letter. It will increment the value by 1 if it encounters it multiple times,
-// otherwise the value will remain as 1.
+//countletters takes in a string and counts how many time a particular letter appears inside
+//it stores the letters and their total number of times it appears into an object, it returns the object at the end
+
 const countLetters = function(sequence) {
-  const letterTotal = {};
+  const letterTotal = {}; //empty placeholder for our object
   for (const letter of sequence) {
-    //If it exists already within letterTotal, +1 to its count, also skips spaces"
-    if (letterTotal[letter] && letter !== " ")   letterTotal[letter]++;    
-    ///If it doesnt exist in letterTotal yet, create an entry and assign 1, also skips spaces"
-    else if (letter !== " ") letterTotal[letter] = 1;
+    //If it exists already within letterTotal, +1 to its count, also ignores spaces"
+    if (letterTotal[letter] && letter !== " ") {
+      letterTotal[letter]++;
+    }
+    ///If it doesnt exist in letterTotal yet, create an entry and assign 1, also ignores spaces"
+    else if (letter !== " ") {
+      letterTotal[letter] = 1;
+    }
   }
   return letterTotal;
 };
 
-//A few test cases
-const sequence1 = countLetters("LHL");
-// console.log(sequence1);
-const sequence2 = countLetters("Lighthouse Labs is pretty gosh darn cool");
-// console.log(sequence2);
-const sequence3 = countLetters("Give life back to music");
-// console.log(sequence3);
-
-assertEqual(sequence1['L'], 2);
-assertEqual(sequence2["t"], 3);
-assertEqual(sequence3.i, 3);
+module.exports = countLetters; //exports our countLetters function to communicate across modules

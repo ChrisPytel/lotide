@@ -1,4 +1,4 @@
-//"index.js created - added all of our lotide functions to module.exports object"
+//"index.js created A2 - updated module.exports to use the new ES6 Property Value Shorthand syntax"
 
 //functions that return console.logs
 const assertEqual = require('./assertEqual');
@@ -21,23 +21,23 @@ const map = require('./map');
 const takeUntil = require('./takeUntil');
 const without = require('./without');
 
-
+//exports all of our modules
 module.exports = {
-  assertEqual: assertEqual,
-  assertArraysEqual: assertArraysEqual,
-  assertObjectsEqual: assertObjectsEqual,
-  countLetters: countLetters,
-  countOnly: countOnly,
-  eqArrays: eqArrays,
-  eqObjects: eqObjects,
-  findKey: findKey,
-  findKeyByValue: findKeyByValue,
-  flatten: flatten,
-  head: head,
-  tail: tail,
-  middle: middle,
-  letterPositions: letterPositions,
-  map: map,
-  takeUntil: takeUntil,
-  without: without
+  assertEqual,
+  assertArraysEqual,
+  assertObjectsEqual,
+  countLetters,
+  countOnly,
+  eqArrays,
+  eqObjects,
+  findKey,
+  findKeyByValue,
+  flatten,
+  head,
+  tail,
+  middle,
+  letterPositions,
+  map,
+  takeUntil,
+  without
 };

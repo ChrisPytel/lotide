@@ -1,8 +1,8 @@
 {
-  "name": "lotide",
+  "name": "@chrispytel/lotide",
   "version": "1.0.0",
-  "description": "",
-  "main": "assertArraysEqual.js",
+  "description": "My library clone of Lodash, project created while at Lighthouse Labs",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/ChrisPytel/lotide.git"
   },
-  "author": "",
+  "author": "Christopher Pytel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ChrisPytel/lotide/issues"
